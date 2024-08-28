@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Journal App
+  data:
+    mongodb:
+      uri: # Here you can provide production server URL.
+      database: # Here you can provide production server database name.
+      auto-index-creation: true
+
+server:
+  port: 9611
+  servlet:
+    context-path: /original

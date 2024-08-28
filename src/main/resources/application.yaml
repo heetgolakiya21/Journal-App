@@ -1,0 +1,27 @@
+# In company, project run on 2 mode: development and production and for both mode configuration of application file is different like mongo server, port etc.
+# For this reason spring provides mode :- dev and prod.
+# This is the default file which spring boot run and in this you can say which files runnable either dev or prod.
+# If you do not create default file and create only application-dev and application-prod file then you want to give profile in edit configuration --> system variable like spring.profiles.active=dev or prod.
+
+spring:
+#  You can also write the common configuration of dev and prod file.
+  profiles:
+    active: dev
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: golakiyahit1@gmail.com
+    password: XXXXX
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+#logging:
+#  level:
+##    root: ERROR
+#    com:
+#      example:
+#        journalApp: TRACE # By Default Info, Warn, Error Enabled but if you want to Enable Debug and Trace then you want to manually enable.

@@ -1,0 +1,29 @@
+#when both files are there then springbooot give more priority to .properties file not to the .yaml file.
+#when .properties file not available, and you create .yaml file than .yaml file also work.
+
+#spring.application.name=Journal App
+#spring.data.mongodb.host=localhost
+#spring.data.mongodb.port=27017
+#spring.data.mongodb.uri=mongodb+srv://user9611:test1234@cluster0.xx8fwpw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+#spring.data.mongodb.database=journalDB
+#spring.data.mongodb.auto-index-creation=true
+#spring.data.mongodb.username=myjournaluser
+#spring.data.mongodb.password=mypassword
+
+spring:
+  application:
+    name: Journal App
+  data:
+    mongodb:
+#      host: localhost
+#      port: 27017
+#      username: myjournaluser
+#      password: mypassword
+      uri: mongodb+srv://user9611:test1234@cluster0.xx8fwpw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: journalDB
+      auto-index-creation: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
