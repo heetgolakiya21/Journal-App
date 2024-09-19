@@ -1,6 +1,7 @@
 package net.ghj.journalApp;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -21,13 +22,14 @@ import java.util.Arrays;
 //@Component Annotation use to create Bean. Here, Bean means Objects.
 @EnableTransactionManagement
 @EnableScheduling
-@Slf4j
 public class JournalAppApplication {
+
+	private static final Logger logger = LoggerFactory.getLogger(JournalAppApplication.class);
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(JournalAppApplication.class, args);
 
-		log.info("Application Started on {}", Arrays.toString(context.getEnvironment().getActiveProfiles()));
+		logger.info("Application Started on {}", Arrays.toString(context.getEnvironment().getActiveProfiles()));
 	}
 
 	@Bean
@@ -38,5 +40,5 @@ public class JournalAppApplication {
 }
 
 /*	> Spring IOC(Inversion of Control) Container:-
-	:- It is a predefined programs or component and  responsible to creating objects, holding them in a memory, injecting them into another object as required (Dependency Injection).
-	:-- ApplicationContext represents the IOC container.	*/
+	:- It is a predefined programs or component and responsible to creating objects, holding them in a memory, injecting them into another object as required (Dependency Injection).
+	:- ApplicationContext represents the IOC container.	*/

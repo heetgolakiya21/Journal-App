@@ -1,4 +1,4 @@
-package net.ghj.journalApp.service;
+package net.ghj.journalApp.service.Impl;
 
 import net.ghj.journalApp.entity.User;
 import net.ghj.journalApp.repository.UserRepository;

@@ -2,24 +2,24 @@
     <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
-                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-7level %logger{36} --- %msg%n
+                %d{dd-MM-yy HH:mm:ss.SSS} [%yellow(%thread)] %highlight(%-7level) %green(%logger{45}) : %msg%n
             </pattern>
         </encoder>
     </appender>
 
     <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <file>journalApp.log</file>
-            <fileNamePattern>journalApp-%d{yy-MM-dd}.%i.log</fileNamePattern>
-            <maxFileSize>512MB</maxFileSize>
-            <maxHistory>1000</maxHistory>
-        </rollingPolicy>
-
         <encoder>
             <pattern>
-                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-7level %logger{36} --- %msg%n
+                %d{dd-MM-yy HH:mm:ss.SSS} [%yellow(%thread)] %highlight(%-7level) %green(%logger{45}) : %msg%n
             </pattern>
         </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <file>scm.log</file>
+            <fileNamePattern>scm-%d{yy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>1024MB</maxFileSize>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
     </appender>
 
     <root level="INFO">
@@ -27,3 +27,11 @@
         <appender-ref ref="myFileAppender" />
     </root>
 </configuration>
+
+<!--    * Spring Boot supports various logging frameworks like:- Logback(Default), Log4j2, JUL(Java Util Login)
+        * The default configuration is embedded within the spring boot libraries, and it may not be visible in your project's source code.
+        * If you want to customize the logging configuration, you can create your own logback.xml file in src/main/resources directory. when spring boot detects this file in your project, it will use it instead of the default configuration.
+        * Logging levels help in categorizing log statements based on their severity. The common logging level are : TRACE, DEBUG, INFO, WARN, ERROR
+        * We can set the desired logging level for specific packages or classes, allowing them to control the amount of information logged at run time.
+        * By default, logging is enabled for INFO, WARN, ERROR
+        * Spring Boot provides like @Slf4j and @Log4j2 that you can use to automatically inject logger instances into your classes.   -->

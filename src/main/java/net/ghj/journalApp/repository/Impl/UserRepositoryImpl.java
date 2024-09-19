@@ -1,4 +1,4 @@
-package net.ghj.journalApp.repository;
+package net.ghj.journalApp.repository.Impl;
 
 import net.ghj.journalApp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;

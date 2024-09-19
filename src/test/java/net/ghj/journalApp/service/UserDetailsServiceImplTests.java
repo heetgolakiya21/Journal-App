@@ -2,6 +2,7 @@ package net.ghj.journalApp.service;
 
 import net.ghj.journalApp.entity.User;
 import net.ghj.journalApp.repository.UserRepository;
+import net.ghj.journalApp.service.Impl.UserDetailsServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

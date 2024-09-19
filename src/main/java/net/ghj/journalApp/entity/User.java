@@ -14,6 +14,7 @@ import java.util.List;
 @Document(collection = "users")
 @Data
 public class User {
+
     @Id
     private ObjectId id;
 
@@ -23,10 +24,10 @@ public class User {
 
     private String email;
 
-    private boolean sentimentAnalysis;
-
     @NonNull
     private String password;
+
+    private boolean sentimentAnalysis;
 
     @DBRef
     private List<JournalEntry> journalEntries = new ArrayList<>();

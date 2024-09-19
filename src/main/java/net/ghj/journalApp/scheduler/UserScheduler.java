@@ -3,7 +3,7 @@ package net.ghj.journalApp.scheduler;
 import net.ghj.journalApp.entity.JournalEntry;
 import net.ghj.journalApp.entity.User;
 import net.ghj.journalApp.enums.Sentiment;
-import net.ghj.journalApp.repository.UserRepositoryImpl;
+import net.ghj.journalApp.repository.Impl.UserRepositoryImpl;
 import net.ghj.journalApp.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
