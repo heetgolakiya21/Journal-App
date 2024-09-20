@@ -15,7 +15,7 @@ spring:
       auto-index-creation: true
   # Security configurations
   # If you want to change default generated username and password than you write below code.
-  security:
-    user:
-      name: john
-      password: 123
+#  security:
+#    user:
+#      name: john
+#      password: 123

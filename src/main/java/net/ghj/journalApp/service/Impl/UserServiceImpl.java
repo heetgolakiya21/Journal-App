@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     public boolean saveNewUser(User user) {
         try {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setRoles(Arrays.asList("USER"));
+            user.setRoles(List.of("USER"));
             userRepository.save(user);
 
             return true;

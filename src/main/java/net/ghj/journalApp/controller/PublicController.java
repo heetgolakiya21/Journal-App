@@ -36,21 +36,25 @@ public class PublicController {
     }
 
     @PostMapping("/user/sign-up")
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<?> signUp(@RequestBody User user) {
         boolean status = userService.saveNewUser(user);
         if (status) return new ResponseEntity<>(HttpStatus.CREATED);
         else return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
     }
 
     @PostMapping("/user/sign-in")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<String> signIn(@RequestBody User user) {
+//        @RequestBody : It's like saying, "hey spring, please take the data from the request and turn it into a java object that I can use in my code."
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
             String JWT = jwtUtil.generateToken(userDetails.getUsername());
+
             return new ResponseEntity<>(JWT, HttpStatus.OK);
+
         } catch (Exception e) {
             log.error("Exception occurred while create authentication token ", e);
+
             return new ResponseEntity<>("Incorrect username or password", HttpStatus.BAD_REQUEST);
         }
     }

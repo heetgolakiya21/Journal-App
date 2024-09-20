@@ -23,13 +23,14 @@ public class UserController {
         userInDB.setUserName(user.getUserName());
         userInDB.setPassword(user.getPassword());
         userInDB.setEmail(user.getEmail());
+        userInDB.setSentimentAnalysis(user.isSentimentAnalysis());
         boolean isSaved = userService.saveNewUser(userInDB);
-        if(isSaved) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (isSaved) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteUser(){
+    public ResponseEntity<?> deleteUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userService.deleteByUserName(authentication.getName());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
