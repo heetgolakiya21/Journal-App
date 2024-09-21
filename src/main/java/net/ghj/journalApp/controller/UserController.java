@@ -19,20 +19,26 @@ public class UserController {
     @PutMapping("/update")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         User userInDB = userService.findByUserName(authentication.getName());
         userInDB.setUserName(user.getUserName());
         userInDB.setPassword(user.getPassword());
         userInDB.setEmail(user.getEmail());
         userInDB.setSentimentAnalysis(user.isSentimentAnalysis());
+
         boolean isSaved = userService.saveNewUser(userInDB);
+
         if (isSaved) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
         else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         userService.deleteByUserName(authentication.getName());
+
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

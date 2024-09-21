@@ -13,7 +13,7 @@ public class UserRepositoryImplTests {
     UserRepositoryImpl userRepository;
 
     @Test
-    public void testFindUser(){
+    public void testFindUser() {
         Assertions.assertNotNull(userRepository.getUserForSA());
     }
 }

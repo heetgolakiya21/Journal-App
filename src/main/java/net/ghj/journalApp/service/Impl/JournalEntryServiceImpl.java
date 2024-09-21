@@ -29,9 +29,12 @@ public class JournalEntryServiceImpl implements JournalEntryService {
             journalEntry.setDate(LocalDate.now());
             JournalEntry saved = journalEntryRepository.save(journalEntry);
             user.getJournalEntries().add(saved);
+
             userService.saveUser(user);
+
         } catch (Exception e) {
             System.out.println("Exception:- " + e);
+
             throw new RuntimeException("An error occurred while saving the entry." + e);
         }
     }

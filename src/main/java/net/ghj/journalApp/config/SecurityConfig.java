@@ -64,6 +64,7 @@ public class SecurityConfig {
     * Authentication: The process of verifying a user's identity. (e.g. username and password)
     * Authorization: The process of granting or denying access to specific resources or actions based on the authenticated user's role and permissions.
     * Filter: A Filter is an object that is invoked at the preprocessing and postprocessing of a request.
+
     * Once the dependency is added, Spring Boot's autoconfiguration feature will automatically apply security to the application.
     * By default, Spring Security uses HTTP Basic Authentication.
     * The client sends an authorization header Authorization: Basic <encoded-string> The server decodes the string, extract the username and password, and verify them. If they're correct, access is granted. Otherwise, an "Unauthorized" response is sent back.
@@ -83,6 +84,7 @@ public class SecurityConfig {
     * When we use the .formLogin() method in our security configuration without specifying .loginPage("/custom-path"), the default login page becomes active.
     * Spring Security provides an in-built controller that handles the /login path. This controller is responsible for rendering the default login form when a GET request is made to /login.
     * By default, Spring Security also provides logout functionality. When .logout() is configured, a POST requests to /logout will log the user out and invalidate their session.
+
     * Basic Authentication, by its design, is stateless.
     * Some application do mix Basic Authentication with session management for various reasons. This isn't standard behaviour and requires additional setup and logic. In such scenarios, once the user's credentials are verified via Basic Authentication, a session might be established, and the client
         is provided a session cookie. This way, the client won't need to send the Authorization header with every request, and the server can rely on the session cookie to identify the authenticated user.
@@ -97,6 +99,7 @@ public class SecurityConfig {
 
     * We want our Spring Boot application to authenticate users based on their credentials stored in a MongoDB database.
     * This means that our users and their passwords (hashed) will be stored in MongoDB, and when a user tries to log in, the system should check the provided credentials against what's stored in database.
+
     * A User entity to represent the user data model.
     * A repository UserRepository to interact with MongoDB.
     * UserDetailsService implementation to fetch user details.

@@ -31,5 +31,5 @@ public class AdminController {
     public void createAdminUser(@RequestBody User user) {
         userService.saveAdmin(user);
     }
-    
+
 }

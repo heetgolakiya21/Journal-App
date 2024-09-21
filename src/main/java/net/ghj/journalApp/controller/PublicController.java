@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,16 +38,19 @@ public class PublicController {
 
     @PostMapping("/user/sign-up")
     public ResponseEntity<?> signUp(@RequestBody User user) {
+//        @RequestBody : It's like saying, "hey spring, please take the data from the request and turn it into a java object that I can use in my code."
         boolean status = userService.saveNewUser(user);
+
         if (status) return new ResponseEntity<>(HttpStatus.CREATED);
+
         else return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
     }
 
     @PostMapping("/user/sign-in")
     public ResponseEntity<String> signIn(@RequestBody User user) {
-//        @RequestBody : It's like saying, "hey spring, please take the data from the request and turn it into a java object that I can use in my code."
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
+            authenticationManager.authenticate(authentication);
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
             String JWT = jwtUtil.generateToken(userDetails.getUsername());
 

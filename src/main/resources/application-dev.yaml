@@ -19,3 +19,15 @@ spring:
 #    user:
 #      name: john
 #      password: 123
+  # Email configurations
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: golakiyahit1@gmail.com
+    password: urpv dwrc wnzm iumo
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
