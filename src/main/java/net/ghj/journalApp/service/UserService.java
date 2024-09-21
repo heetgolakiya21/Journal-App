@@ -1,6 +1,7 @@
 package net.ghj.journalApp.service;
 
 import net.ghj.journalApp.entity.User;
+
 import java.util.List;
 
 public interface UserService {
